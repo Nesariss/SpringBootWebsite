@@ -18,7 +18,6 @@ public class HelloController {
     @GetMapping("/car")
     public String get(Model model){
         Car car= new Car("mazda", "3");
-        model.addAttribute("name", "Przemek");
         model.addAttribute("car", car);
         model.addAttribute("newCar",new Car());
         return"car";
@@ -28,7 +27,7 @@ public class HelloController {
     public String addCar(@ModelAttribute Car car){
         System.out.println(car.getMark());
         modell=car.getMark();
-        int id=16;
+        int id=2;
         int wiek=22;
         String sql="INSERT INTO uzytkownik (id,wiek,model) VALUES(?,?,?)";
         int rows=jdbcTemplate.update(sql,id,wiek,modell);
