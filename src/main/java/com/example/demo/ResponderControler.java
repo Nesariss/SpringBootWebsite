@@ -9,15 +9,35 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class HelloController {
+public class ResponderControler {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public static String modell;
+    private ResponderService responderService;
 
+    @Autowired
+    public ResponderControler(ResponderService responderService){
+        this.responderService = responderService;
+    }
+
+    @GetMapping("/form")
+    public String showForm(Model model){
+        Responder responder = new Responder();
+        model.addAttribute("responder",responder);
+        return "index";
+    }
+
+
+    @PostMapping("/add")
+    public String registerNewResponder(@ModelAttribute Responder responder){
+        responderService.addNewResponder(responder);
+        return "index";
+    }
+/*
     @GetMapping("/car")
     public String get(Model model){
         Car car= new Car("mazda", "3");
+
         model.addAttribute("car", car);
         model.addAttribute("newCar",new Car());
         return"car";
@@ -26,7 +46,7 @@ public class HelloController {
     @PostMapping("/add")
     public String addCar(@ModelAttribute Car car){
         System.out.println(car.getMark());
-        modell=car.getMark();
+
         int id=2;
         int wiek=22;
         String sql="INSERT INTO uzytkownik (id,wiek,model) VALUES(?,?,?)";
@@ -36,4 +56,7 @@ public class HelloController {
         }
         return "redirect:/car";
     }
+
+ */
+
 }
