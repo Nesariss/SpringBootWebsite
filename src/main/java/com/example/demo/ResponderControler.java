@@ -27,10 +27,20 @@ public class ResponderControler {
         return "index";
     }
 
+    @GetMapping("/")
+    public String powitanie(){
+
+        return "powitanie";
+    }
 
     @PostMapping("/add")
     public String registerNewResponder(@ModelAttribute Responder responder){
         responderService.addNewResponder(responder);
+        System.out.println(responderService);
+    if(responderService!=null) {
+        return "podziekowanie";
+    }
+    else
         return "index";
     }
 /*

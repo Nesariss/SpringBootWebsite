@@ -76,6 +76,7 @@ min-height:140px;
 	 width:890px;
 	 background-color:white;
 	 min-height: 1245px;
+
 }
 #zdjecia
 {
@@ -209,7 +210,7 @@ body
 {
 	background-color:#CC99FF;
 	font-family: Verdana;
-	font-size: 15px;
+	font-size: 17px;
 	color:black;
 	font-family: 'Kodchasan', sans-serif;
 }
@@ -235,7 +236,18 @@ a:hover
 {
 	color:yellow;
 }
-
+   div.section {
+                color: black;
+                text-align: center;
+                background-color: lightgreen;
+                font-family: "TimeNewRoman";
+                width:50%;
+                border-radius: 45px;
+                font-weight:bold;
+                margin: 5% auto;
+                font-size: 170%;
+                padding: 1%;
+            }
 
 
 
@@ -300,89 +312,117 @@ a:hover
                 <label>Wiek:</label>
                 <input type="number" th:field="*{age}" /><br/>
 
-                <label>Plec:</label>
-                <input type="radio" th:field="*{sex}" value=True />Meżczyzna
+                <label>Płeć:</label>
+                <input type="radio" th:field="*{sex}" value=True />Mężczyzna
                 <input type="radio" th:field="*{sex}" value=False />Kobieta<br/>
 
                 <label>Student</label>
                 <input type="checkbox" th:field="*{student}" /><br/>
 
-                <label>nazwa uczelni:</label>
+                <label>Nazwa uczelni:</label>
                 <input type="text" th:field="*{collage}" /><br/>
 
                 <label>Pseudonim (opcjonalnie)</label>
                 <input type="text" th:field="*{name}" /><br/>
 
-                <label>Czas spędzony siedzac przed pandemia</label>
-                <input type="number" th:field="*{sittingTimeBef}" /><br/>
+                <label><b>Czas spędzony w pozycji siedzącej przed pandemią w ciągu dnia</b> </label><br/>
+                <input type="radio" th:field="*{sittingTimeBef}" value="zero_cztery" required />0-4h
+                <input type="radio" th:field="*{sittingTimeBef}" value="cztery_osiem" />4-8h
+                <input type="radio" th:field="*{sittingTimeBef}" value="osiem_dwanascie" />8-12h
+                <input type="radio" th:field="*{sittingTimeBef}" value="ponad_dwanascie" />12+h<br/><br/>
 
-                <label>Czas spędzony aktywnie przed pandemia</label>
-                <input type="number" th:field="*{activityTimeBef}" /><br/>
+                <label><b>Czas spędzony aktywnie przed pandemią w ciągu dnia </b></label><br/>
+                <input type="radio" th:field="*{activityTimeBef}" value="zero_cztery" required />0-4h
+                <input type="radio" th:field="*{activityTimeBef}" value="cztery_osiem" />4-8h
+                <input type="radio" th:field="*{activityTimeBef}" value="osiem_dwanascie" />8-12h
+                <input type="radio" th:field="*{activityTimeBef}" value="ponad_dwanascie" />12+h<br/><br/>
 
-                <label>Samopoczucie przed pandemia</label><br/>
-                <input type="radio" th:field="*{well_beingBef}" value="BardzoZle" />Bardzo zle
-                <input type="radio" th:field="*{well_beingBef}" value="Zle" />Zle
-                <input type="radio" th:field="*{well_beingBef}" value="Srednie" />Srednie
+                <label><b>Jaki posiadasz wzkaźnik BMI</b></label><br/>
+                <input type="radio" th:field="*{BMI}" value="zero_cztery" required/> Mniej niż 17
+                <input type="radio" th:field="*{BMI}" value="cztery_osiem" /> Pomiędzy 17 a 25
+                <input type="radio" th:field="*{BMI}" value="osiem_dwanascie" />  Pomiędzy 25 a 30
+                <input type="radio" th:field="*{BMI}" value="ponad_dwanascie" />Powyżej 30 <br/><br/>
+
+
+                <label><b>Samopoczucie przed pandemią</b></label><br/>
+                <input type="radio" th:field="*{well_beingBef}" value="BardzoZle" required />Bardzo złe
+                <input type="radio" th:field="*{well_beingBef}" value="Zle" />Złe
+                <input type="radio" th:field="*{well_beingBef}" value="Srednie" />średnie
                 <input type="radio" th:field="*{well_beingBef}" value="Dobre" />Dobre
                 <input type="radio" th:field="*{well_beingBef}" value="BardzoDobre" />Bardzo dobre<br/><br/>
 
-                <label>Stan fizyczny przed pandemia</label><br/>
-                <input type="radio" th:field="*{physicalHealthyBef}" value="BardzoZle" />Bardzo zle
-                <input type="radio" th:field="*{physicalHealthyBef}" value="Zle" />Zle
-                <input type="radio" th:field="*{physicalHealthyBef}" value="Srednie" />Srednie
-                <input type="radio" th:field="*{physicalHealthyBef}" value="Dobre" />Dobre
-                <input type="radio" th:field="*{physicalHealthyBef}" value="BardzoDobre" />Bardzo dobre<br/><br/>
+                <label><b>Stan fizyczny przed pandemią</b></label><br/>
+                <input type="radio" th:field="*{physicalHealthyBef}" value="BardzoZle" />Bardzo zły
+                <input type="radio" th:field="*{physicalHealthyBef}" value="Zle" />Zły
+                <input type="radio" th:field="*{physicalHealthyBef}" value="Srednie" />Sredni
+                <input type="radio" th:field="*{physicalHealthyBef}" value="Dobre" />Dobry
+                <input type="radio" th:field="*{physicalHealthyBef}" value="BardzoDobre" />Bardzo dobry<br/><br/>
 
-                <label>Stan psychiczny przed pandemia</label><br/>
-                <input type="radio" th:field="*{mentalHealthyBef}" value="BardzoZle" />Bardzo zle
-                <input type="radio" th:field="*{mentalHealthyBef}" value="Zle" />Zle
-                <input type="radio" th:field="*{mentalHealthyBef}" value="Srednie" />Srednie
-                <input type="radio" th:field="*{mentalHealthyBef}" value="Dobre" />Dobre
-                <input type="radio" th:field="*{mentalHealthyBef}" value="BardzoDobre" />Bardzo dobre <br/><br/>
-                <label>Czas spędzony siedzac w trakcie pandemi</label>
-                <input type="number" th:field="*{sittingTimeAft}" /><br/><br/>
+                <label><b>Stan psychiczny przed pandemią</b></label><br/>
+                <input type="radio" th:field="*{mentalHealthyBef}" value="BardzoZle" required/>Bardzo zły
+                <input type="radio" th:field="*{mentalHealthyBef}" value="Zle" />Zły
+                <input type="radio" th:field="*{mentalHealthyBef}" value="Srednie" />Sredni
+                <input type="radio" th:field="*{mentalHealthyBef}" value="Dobre" />Dobry
+                <input type="radio" th:field="*{mentalHealthyBef}" value="BardzoDobre" />Bardzo dobry <br/><br/>
 
-                <label>Czas spędzony aktywnie w trakcie pandemi</label>
-                <input type="number" th:field="*{activityTimeBef}" /><br/><br/>
+                <label><b>Czas spędzony w pozycji siedzącej w trakcie pandemii w ciągu dnia </b></label><br/>
+                <input type="radio" th:field="*{sittingTimeAft}" value="zero_cztery" required/>0-4h
+                <input type="radio" th:field="*{sittingTimeAft}" value="cztery_osiem" />4-8h
+                <input type="radio" th:field="*{sittingTimeAft}" value="osiem_dwanascie" />8-12h
+                <input type="radio" th:field="*{sittingTimeAft}" value="ponad_dwanascie" />12+h<br/><br/>
 
-                <label>Samopoczucie w trakcie pandemii</label><br/>
-                <input type="radio" th:field="*{well_beingAft}" value="BardzoZle" />Bardzo zle
-                <input type="radio" th:field="*{well_beingAft}" value="Zle" />Zle
+                <label><b>Czas spędzony aktywnie w trakcie pandemii</b></label><br/>
+                <input type="radio" th:field="*{activityTimeAft}" value="zero_cztery" required />0-4h
+                <input type="radio" th:field="*{activityTimeAft}" value="cztery_osiem" />4-8h
+                <input type="radio" th:field="*{activityTimeAft}" value="osiem_dwanascie" />8-12h
+                <input type="radio" th:field="*{activityTimeAft}" value="ponad_dwanascie" />12+h<br/><br/>
+
+                <label><b>Jak najczęściej spędzasz czas na siedząco</b></label><br/>
+                <input type="radio" th:field="*{spendtime}" value="BardzoZle" required />TV
+                <input type="radio" th:field="*{spendtime}" value="Zle" />Komputer
+                <input type="radio" th:field="*{spendtime}" value="Srednie" />Czytanie książki
+                <input type="radio" th:field="*{spendtime}" value="Dobre" />Prowadzenie auta
+                <input type="radio" th:field="*{spendtime}" value="BardzoDobre" />Inne<br/><br/>
+
+                <label><b>Samopoczucie w trakcie pandemii</b></label><br/>
+                <input type="radio" th:field="*{well_beingAft}" value="BardzoZle" required />Bardzo złe
+                <input type="radio" th:field="*{well_beingAft}" value="Zle" />Złe
+                <input type="radio" th:field="*{well_beingAft}" value="Srednie" />Srednie
                 <input type="radio" th:field="*{well_beingAft}" value="Dobre" />Dobre
                 <input type="radio" th:field="*{well_beingAft}" value="BardzoDobre" />Bardzo dobre<br/><br/>
 
-                <label>Stan fizyczny w trakcie pandemi</label><br/>
-                <input type="radio" th:field="*{physicalHealthyAft}" value="BardzoZle" />Bardzo zle
-                <input type="radio" th:field="*{physicalHealthyAft}" value="Zle" />Zle
-                <input type="radio" th:field="*{physicalHealthyAft}" value="Srednie" />Srednie
-                <input type="radio" th:field="*{physicalHealthyAft}" value="Dobre" />Dobre
-                <input type="radio" th:field="*{physicalHealthyAft}" value="BardzoDobre" />Bardzo dobre<br/><br/>
+                <label><b>Stan fizyczny w trakcie pandemi</b></label><br/>
+                <input type="radio" th:field="*{physicalHealthyAft}" value="BardzoZle" required />Bardzo zły
+                <input type="radio" th:field="*{physicalHealthyAft}" value="Zle" />Zły
+                <input type="radio" th:field="*{physicalHealthyAft}" value="Srednie" />Sredni
+                <input type="radio" th:field="*{physicalHealthyAft}" value="Dobre" />Dobry
+                <input type="radio" th:field="*{physicalHealthyAft}" value="BardzoDobre" />Bardzo dobry<br/><br/>
 
-                <label>Stan psychiczny w trakcie pandemi</label><br/>
-                <input type="radio" th:field="*{mentalHealthyAft}" value="BardzoZle" />Bardzo zle
-                <input type="radio" th:field="*{mentalHealthyAft}" value="Zle" />Zle
-                <input type="radio" th:field="*{mentalHealthyAft}" value="Srednie" />Srednie
-                <input type="radio" th:field="*{mentalHealthyAft}" value="Dobre" />Dobre
-                <input type="radio" th:field="*{mentalHealthyAft}" value="BardzoDobre" />Bardzo dobre<br/><br/>
+                <label><b>Stan psychiczny w trakcie pandemii</b></label><br/>
+                <input type="radio" th:field="*{mentalHealthyAft}" value="BardzoZle" required />Bardzo zły
+                <input type="radio" th:field="*{mentalHealthyAft}" value="Zle" />Zły
+                <input type="radio" th:field="*{mentalHealthyAft}" value="Srednie" />Sredni
+                <input type="radio" th:field="*{mentalHealthyAft}" value="Dobre" />Dobry
+                <input type="radio" th:field="*{mentalHealthyAft}" value="BardzoDobre" />Bardzo dobry<br/><br/>
 
-                <label>Dieta</label><br/>
-                <input type="radio" th:field="*{dieta}" value="NieZdrowa" />Nie zdrowa
-                <input type="radio" th:field="*{dieta}" value="Raczejniezdrowa" />Raczej nie zdrowa
+                <label><b>Dieta</b></label><br/>
+                <input type="radio" th:field="*{dieta}" value="NieZdrowa" required/>Niezdrowa
+                <input type="radio" th:field="*{dieta}" value="Raczejniezdrowa" />Raczej niezdrowa
                 <input type="radio" th:field="*{dieta}" value="RaczejZdrowa" />Raczej zdrowa
                 <input type="radio" th:field="*{dieta}" value="Zdrowa" />Zdrowa<br/><br/>
 
 
 
-                <label>Czy bierzesz jakies leki</label>
+                <label><b>Czy bierzesz jakieś leki?</b></label>
                 <input type="checkbox" th:field="*{takeMedicament}" /><br/>
 
-                <label>Leki</label>
+                <label><b>Leki</b></label>
                 <input type="text" th:field="*{medicament}" /><br/>
 
-                <label>Czy jestes chory</label>
+                <label><b>Czy cierpisz na jakąś chorobę przewlekłą?</b></label>
                 <input type="checkbox" th:field="*{haveIlness}" /><br/>
 
-                <label>Choroba</label>
+                <label><b><Choroba</b></label>
                 <input type="text" th:field="*{ilness}" /><br/>
 
 

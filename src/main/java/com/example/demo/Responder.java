@@ -11,6 +11,9 @@ public class Responder {
     enum PhyHealth {BardzoZle, Zle, Srednie, Dobre, BardzoDobre}
     enum MentHealth {BardzoZle, Zle, Srednie, Dobre, BardzoDobre}
     enum Dieta {NieZdrowa,Raczejniezdrowa,RaczejZdrowa,Zdrowa}
+    enum czas {zero_cztery,cztery_osiem,osiem_dwanascie,ponad_dwanascie}
+
+
 
 
     @Id
@@ -28,28 +31,91 @@ public class Responder {
     private boolean student;
     private String collage;
     private String name;
-    //question information
+    private Comfort spendtime;
+
+
+    private czas BMI;
+
+
+//question information
     //before pandemic
-    private int sittingTimeBef;
-    private int activityTimeBef;
+
     private Comfort well_beingBef;
     private PhyHealth physicalHealthyBef;
     private MentHealth mentalHealthyBef;
     //after pandemic
-    private int sittingTimeAft;
-    private int activityTimeAft;
+
     private Comfort well_beingAft;
     private PhyHealth physicalHealthyAft;
     private MentHealth mentalHealthyAft;
 
+    private czas sittingTimeBef;
+    private czas activityTimeBef;
+    private czas sittingTimeAft;
+    private czas activityTimeAft;
 
     private Dieta dieta;
+
+    public Comfort getSpendtime() {
+        return spendtime;
+    }
+
+    public void setSpendtime(Comfort spendtime) {
+        this.spendtime = spendtime;
+    }
+
+    public String getMedicament() {
+        return medicament;
+    }
+
+    public czas getSittingTimeBef() {
+        return sittingTimeBef;
+    }
+
+    public void setSittingTimeBef(czas sittingTimeBef) {
+        this.sittingTimeBef = sittingTimeBef;
+    }
+
+    public czas getActivityTimeBef() {
+        return activityTimeBef;
+    }
+
+    public void setActivityTimeBef(czas activityTimeBef) {
+        this.activityTimeBef = activityTimeBef;
+    }
+
+    public czas getSittingTimeAft() {
+        return sittingTimeAft;
+    }
+
+    public void setSittingTimeAft(czas sittingTimeAft) {
+        this.sittingTimeAft = sittingTimeAft;
+    }
+
+    public czas getActivityTimeAft() {
+        return activityTimeAft;
+    }
+
+    public void setActivityTimeAft(czas activityTimeAft) {
+        this.activityTimeAft = activityTimeAft;
+    }
+
+    public String getIlness() {
+        return ilness;
+    }
+    public czas getBMI() {
+        return BMI;
+    }
+
+    public void setBMI(czas BMI) {
+        this.BMI = BMI;
+    }
+
+
     private boolean takeMedicament;
-    private ArrayList<String> medicament;
+    private String medicament;
     private boolean haveIlness;
-    private ArrayList<String> ilness;
-
-
+    private String ilness;
 
 
 
@@ -93,22 +159,6 @@ public class Responder {
         this.name = name;
     }
 
-    public int getSittingTimeBef() {
-        return sittingTimeBef;
-    }
-
-    public void setSittingTimeBef(int sittingTimeBef) {
-        this.sittingTimeBef = sittingTimeBef;
-    }
-
-    public int getActivityTimeBef() {
-        return activityTimeBef;
-    }
-
-    public void setActivityTimeBef(int activityTimeBef) {
-        this.activityTimeBef = activityTimeBef;
-    }
-
     public Comfort getWell_beingBef() {
         return well_beingBef;
     }
@@ -133,21 +183,7 @@ public class Responder {
         this.mentalHealthyBef = mentalHealthyBef;
     }
 
-    public int getSittingTimeAft() {
-        return sittingTimeAft;
-    }
 
-    public void setSittingTimeAft(int sittingTimeAft) {
-        this.sittingTimeAft = sittingTimeAft;
-    }
-
-    public int getActivityTimeAft() {
-        return activityTimeAft;
-    }
-
-    public void setActivityTimeAft(int activityTimeAft) {
-        this.activityTimeAft = activityTimeAft;
-    }
 
     public Comfort getWell_beingAft() {
         return well_beingAft;
@@ -188,14 +224,14 @@ public class Responder {
     public void setTakeMedicament(boolean takeMedicament) {
         this.takeMedicament = takeMedicament;
     }
-
-    public ArrayList<String> getMedicament() {
-        return medicament;
-    }
-
-    public void setMedicament(ArrayList<String> medicament) {
+    public void setMedicament(String medicament) {
         this.medicament = medicament;
     }
+
+    public void setIlness(String ilness) {
+        this.ilness = ilness;
+    }
+
 
     public boolean isHaveIlness() {
         return haveIlness;
@@ -205,11 +241,5 @@ public class Responder {
         this.haveIlness = haveIllness;
     }
 
-    public ArrayList<String> getIlness() {
-        return ilness;
-    }
 
-    public void setIlness(ArrayList<String> ilness) {
-        this.ilness = ilness;
-    }
 }
