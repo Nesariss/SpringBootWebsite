@@ -11,111 +11,45 @@ public class Responder {
     enum PhyHealth {BardzoZle, Zle, Srednie, Dobre, BardzoDobre}
     enum MentHealth {BardzoZle, Zle, Srednie, Dobre, BardzoDobre}
     enum Dieta {NieZdrowa,Raczejniezdrowa,RaczejZdrowa,Zdrowa}
-    enum czas {zero_cztery,cztery_osiem,osiem_dwanascie,ponad_dwanascie}
+    enum Time {zero_cztery,cztery_osiem,osiem_dwanascie,ponad_dwanascie}
 
 
 
 
     @Id
-    @SequenceGenerator(
-            name = "responder_sequence",
-            sequenceName = "responder_sequence",
-            allocationSize = 1
-    )
+
     //identify
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "responder_sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int age;
     private boolean sex;
     private boolean student;
     private String collage;
     private String name;
-    private Comfort spendtime;
-
-
-    private czas BMI;
-
-
-//question information
+    //question information
     //before pandemic
-
+    private Time sittingTimeBef;
+    private Time activityTimeBef;
     private Comfort well_beingBef;
     private PhyHealth physicalHealthyBef;
     private MentHealth mentalHealthyBef;
     //after pandemic
-
+    private Time sittingTimeAft;
+    private Time activityTimeAft;
     private Comfort well_beingAft;
     private PhyHealth physicalHealthyAft;
     private MentHealth mentalHealthyAft;
+    private Time BMI;
+    private Comfort spendtime;
 
-    private czas sittingTimeBef;
-    private czas activityTimeBef;
-    private czas sittingTimeAft;
-    private czas activityTimeAft;
 
     private Dieta dieta;
-
-    public Comfort getSpendtime() {
-        return spendtime;
-    }
-
-    public void setSpendtime(Comfort spendtime) {
-        this.spendtime = spendtime;
-    }
-
-    public String getMedicament() {
-        return medicament;
-    }
-
-    public czas getSittingTimeBef() {
-        return sittingTimeBef;
-    }
-
-    public void setSittingTimeBef(czas sittingTimeBef) {
-        this.sittingTimeBef = sittingTimeBef;
-    }
-
-    public czas getActivityTimeBef() {
-        return activityTimeBef;
-    }
-
-    public void setActivityTimeBef(czas activityTimeBef) {
-        this.activityTimeBef = activityTimeBef;
-    }
-
-    public czas getSittingTimeAft() {
-        return sittingTimeAft;
-    }
-
-    public void setSittingTimeAft(czas sittingTimeAft) {
-        this.sittingTimeAft = sittingTimeAft;
-    }
-
-    public czas getActivityTimeAft() {
-        return activityTimeAft;
-    }
-
-    public void setActivityTimeAft(czas activityTimeAft) {
-        this.activityTimeAft = activityTimeAft;
-    }
-
-    public String getIlness() {
-        return ilness;
-    }
-    public czas getBMI() {
-        return BMI;
-    }
-
-    public void setBMI(czas BMI) {
-        this.BMI = BMI;
-    }
-
-
-    private boolean takeMedicament;
-    private String medicament;
     private boolean haveIlness;
-    private String ilness;
+    private boolean takeMedicament;
+    private String comment;
+    @OneToOne(targetEntity = Diseases.class, cascade = CascadeType.ALL)
+    private Diseases diseases;
+
 
 
 
@@ -159,6 +93,22 @@ public class Responder {
         this.name = name;
     }
 
+    public Time getSittingTimeBef() {
+        return sittingTimeBef;
+    }
+
+    public void setSittingTimeBef(Time sittingTimeBef) {
+        this.sittingTimeBef = sittingTimeBef;
+    }
+
+    public Time getActivityTimeBef() {
+        return activityTimeBef;
+    }
+
+    public void setActivityTimeBef(Time activityTimeBef) {
+        this.activityTimeBef = activityTimeBef;
+    }
+
     public Comfort getWell_beingBef() {
         return well_beingBef;
     }
@@ -183,7 +133,21 @@ public class Responder {
         this.mentalHealthyBef = mentalHealthyBef;
     }
 
+    public Time getSittingTimeAft() {
+        return sittingTimeAft;
+    }
 
+    public void setSittingTimeAft(Time sittingTimeAft) {
+        this.sittingTimeAft = sittingTimeAft;
+    }
+
+    public Time getActivityTimeAft() {
+        return activityTimeAft;
+    }
+
+    public void setActivityTimeAft(Time activityTimeAft) {
+        this.activityTimeAft = activityTimeAft;
+    }
 
     public Comfort getWell_beingAft() {
         return well_beingAft;
@@ -224,14 +188,14 @@ public class Responder {
     public void setTakeMedicament(boolean takeMedicament) {
         this.takeMedicament = takeMedicament;
     }
-    public void setMedicament(String medicament) {
-        this.medicament = medicament;
+
+    public String getComment() {
+        return comment;
     }
 
-    public void setIlness(String ilness) {
-        this.ilness = ilness;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
-
 
     public boolean isHaveIlness() {
         return haveIlness;
@@ -240,6 +204,40 @@ public class Responder {
     public void setHaveIlness(boolean haveIllness) {
         this.haveIlness = haveIllness;
     }
+    public Diseases getDiseases(Diseases diseases) {
+        return this.diseases;
+    }
 
+    public void setDiseases(Diseases diseases) {
+        this.diseases = diseases;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isSex() {
+        return sex;
+    }
+
+    public Time getBMI() {
+        return BMI;
+    }
+
+    public void setBMI(Time BMI) {
+        this.BMI = BMI;
+    }
+
+    public Comfort getSpendtime() {
+        return spendtime;
+    }
+
+    public void setSpendtime(Comfort spendtime) {
+        this.spendtime = spendtime;
+    }
 }
+

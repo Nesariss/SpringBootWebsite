@@ -467,30 +467,47 @@ function myFunction(check,tx) {
 
 
                 <div class=section>
-                    <label><b>Czy bierzesz jakieś leki?</b></label>
-                    <input type="checkbox" th:field="*{takeMedicament}"id="myCheckk" onclick="myFunction('myCheckk','dxx')" /><br/>
-                </div>
-
-                <div class=section id="dxx">
-                    <label><b>Leki</b></label><br/>
-                    <input type="text" th:field="*{medicament}" /><br/>
+                    <label><b>Czy zażywasz leki na stałe?</b></label>
+                    <input type="checkbox" th:field="*{takeMedicament}" /><br/>
                 </div>
 
 
                 <div class=section>
-                    <label><b>Czy cierpisz na jakąś chorobę przewlekłą?</b></label><br/>
-                    <input type="checkbox" th:field="*{haveIlness}" id="myCheckkk"  onclick="myFunction('myCheckkk','dxxx')" /><br/>
+                    <label><b>Czy cierpisz na jakąś chorobę przewlekłą?</b></label>
+                    <input type="checkbox" th:field="*{haveIlness}" id="myCheckk" onclick="myFunction('myCheckk','dxx')" /><br/>
                 </div>
 
-                <div class=section id="dxxx">
-                    <label><b>Choroba</b></label><br/>
-                    <input type="text" th:field="*{ilness}" /><br/>
+                <div class=section id="dxx">
+                    <label><b>Wybierz z poniższych</b></label><br/>
+                    <th:block th:object="${diseases}">
+                        <input type="checkbox" th:field="*{nadcisnienie}" />Nadciśnienie<br/>
+                        <input type="checkbox" th:field="*{dyslipidemia}" />Dyslipidemia<br/>
+                        <input type="checkbox" th:field="*{osteoporoza}" />Osteoporoza<br/>
+                        <input type="checkbox" th:field="*{inneChorobyKrazenia}" />Inna choroba związana z układem krążenia<br/>
+                        <input type="checkbox" th:field="*{inneChorobyCukrowe}" />Inna choroba związana z gospodarką cukrową<br/>
+                        <input type="checkbox" th:field="*{inne}" id="myCheckkk" onclick="myFunction('myCheckkk','dxxx')"/>Inna<br/>
+                        <div id="dxxx">
+                            <input type="text" th:field="*{ilnes1}" />
+                            <input type="checkbox" id="myCheckkk1" onclick="myFunction('myCheckkk1','dxxx1')" />Nowy<br/>
+                        </div>
+                        <div id="dxxx1">
+                            <input type="text" th:field="*{ilnes2}" />
+                            <input type="checkbox" id="myCheckkk2" onclick="myFunction('myCheckkk2','dxxx2')" />Nowy<br/>
+                        </div>
+                        <div id="dxxx2">
+                            <input type="text" th:field="*{ilnes3}" />
+                        </div>
+                    </th:block>
+                </div>
+
+                <div class=section >
+                    <label><b>Zostaw dodatkowy komentarz</b></label><br/>
+                    <input type="text" th:field="*{comment}" /><br/>
                 </div>
 
 
-                <button type="submit">Register</button>
+                <button type="submit" >Register</button>
             </form>
-
 
 
 

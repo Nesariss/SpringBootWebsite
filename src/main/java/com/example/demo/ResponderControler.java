@@ -23,7 +23,9 @@ public class ResponderControler {
     @GetMapping("/form")
     public String showForm(Model model){
         Responder responder = new Responder();
+        Diseases diseases = new Diseases();
         model.addAttribute("responder",responder);
+        model.addAttribute("diseases",diseases);
         return "index";
     }
 
@@ -34,8 +36,8 @@ public class ResponderControler {
     }
 
     @PostMapping("/add")
-    public String registerNewResponder(@ModelAttribute Responder responder){
-        responderService.addNewResponder(responder);
+    public String registerNewResponder(@ModelAttribute Responder responder,@ModelAttribute Diseases diseases){
+        responderService.addNewResponder(responder,diseases);
         System.out.println(responderService);
     if(responderService!=null) {
         return "podziekowanie";
@@ -43,30 +45,6 @@ public class ResponderControler {
     else
         return "index";
     }
-/*
-    @GetMapping("/car")
-    public String get(Model model){
-        Car car= new Car("mazda", "3");
 
-        model.addAttribute("car", car);
-        model.addAttribute("newCar",new Car());
-        return"car";
-    }
-
-    @PostMapping("/add")
-    public String addCar(@ModelAttribute Car car){
-        System.out.println(car.getMark());
-
-        int id=2;
-        int wiek=22;
-        String sql="INSERT INTO uzytkownik (id,wiek,model) VALUES(?,?,?)";
-        int rows=jdbcTemplate.update(sql,id,wiek,modell);
-        if(rows>0){
-            System.out.println("A new row has been added");
-        }
-        return "redirect:/car";
-    }
-
- */
 
 }
